@@ -1,35 +1,41 @@
-{% set version =  "0.4" %}
+{% set name = "overpy" %}
+{% set version = "0.5" %}
+
 
 package:
-  name: overpy
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/o/overpy/overpy-{{ version }}.tar.gz
-  sha256: 6e5bfcd9368f0c33a5d7615b18dbcac18444157f447639287c6743aa2de8964d
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/overpy-{{ version }}.tar.gz
+  sha256: 2fb711df0771cd904049d523b58a0b47675bd23baccce9b40ef8eb139deacb03
 
 build:
   number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3.6
     - pip
     - pytest-runner
   run:
-    - python
+    - python >=3.6
 
 test:
   imports:
     - overpy
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/DinoTools/python-overpy
+  summary: Python Wrapper to access the OpenStreepMap Overpass API
   license: MIT
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
-  summary: 'Python Wrapper to access the OpenStreepMap Overpass API'
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
