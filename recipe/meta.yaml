@@ -1,5 +1,5 @@
 {% set name = "overpy" %}
-{% set version = "0.5" %}
+{% set version = "0.6" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/overpy-{{ version }}.tar.gz
-  sha256: 2fb711df0771cd904049d523b58a0b47675bd23baccce9b40ef8eb139deacb03
+  sha256: 75fa462c445a3d8ade4dad84df6f150d273f45548639229316829a3a8c3e2190
 
 build:
   number: 0
